@@ -51,3 +51,16 @@
 ### 访问系统
 前端控制台：http://localhost:3000
 后端API：http://localhost:5000
+
+## 功能界面
+
+### 控制台界面
+<img width="1194" height="244" alt="image" src="https://github.com/user-attachments/assets/a14ac5d5-f806-4010-83a7-124e6d163922" />
+
+### 数据收集
+<img width="1502" height="838" alt="image" src="https://github.com/user-attachments/assets/0a83fe0b-1987-4796-8583-f50cd8ab873a" />
+
+### 评估情况
+<img width="690" height="389" alt="image" src="https://github.com/user-attachments/assets/89c5c931-7838-43de-abd0-26f5d74072f9" />
+
+
