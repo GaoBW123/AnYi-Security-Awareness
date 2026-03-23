@@ -1,0 +1,25 @@
+import * as React from "react";
+
+import "./${Name}.scss";
+
+interface ${Name}State {
+    
+};
+
+interface ${Name}Props {
+
+};
+
+export default class ${Name} extends React.Component<${Name}Props, ${Name}State> {
+    constructor(props: ${Name}Props) {
+        super(props);
+    }
+
+    render(): React.ReactNode {
+        return (
+            <>
+
+            </>
+        );
+    }
+}

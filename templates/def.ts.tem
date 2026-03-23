@@ -1,0 +1,23 @@
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+interface ${Name}State {
+
+};
+
+const initialState: ${Name}State = {
+
+};
+
+export const ${Name}Slice = createSlice({
+    name: "${Name}",
+    initialState,
+    reducers: {
+        
+    },
+    extraReducers: (builder) => {
+        
+    }
+});
+
+// export const { } = ${Name}Slice.actions;
+export default ${Name}Slice.reducer;

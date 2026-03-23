@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../images/wallhaven-l3geq2.jpg");
+    background-size: cover;
+
+    .input {
+        backdrop-filter: blur(16px);
+        border: solid 2px #dc4170;
+        background: #00000030;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 4px #00000050;
+        width: 340px;
+    }
+    .title {
+        font-size: 26px;
+        color: #ecf0f1;
+        font-family: 'Courier New', Courier, monospace;
+        margin: 10px 0px 10px 30px;
+        position: relative;
+
+        &::after {
+            position: absolute;
+            content: "";
+            left: -30px;
+            top: 8px;
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            border: solid 2px #dc4170;
+            box-shadow: inset 0px 0px 5px #00000043;
+        }
+    }
+    .h-line {
+        width: 100%;
+        height: 3px;
+        background: #dc4170;
+    }
+    .in-box {
+        font-family: 'Courier New', Courier, monospace;
+        color: #ecf0f1;
+        position: relative;
+        margin: 26px 0px;
+
+        input {
+            font-family: 'Courier New', Courier, monospace;
+            color: #ecf0f1;
+            outline: none;
+            border: none;
+            width: 100%;
+            height: 32px;
+            font-size: 16px;
+            background: none;
+            border-bottom: solid 1.5px #bdc3c7;
+
+            &:valid + .name, &:valid + .pass{
+                transform: translateY(-120%) scale(0.8) translateX(-10px);
+                color: #f1c40f;
+            }
+
+            &:focus + .name, &:focus + .pass{
+                transform: translateY(-120%) scale(0.8) translateX(-10px);
+                color: #f1c40f;
+                transition: all 0.15s ease-out;
+            }
+        }
+
+        .name {
+            pointer-events: none;
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            transition: all 0.15s ease-out;
+        }
+    
+        .pass {
+            pointer-events: none;
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            transition: all 0.15s ease-out;
+        }
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+        input {
+            outline: none;
+            border: solid 2px #dc4170;
+            border-radius: 40px;
+            box-shadow: 2px 2px 3px #00000060;
+            padding: 5px 20px;
+            color: #ecf0f1;
+            background: none;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+
+            &:active {
+                box-shadow: 0px 0px 2px #00000050;
+            }
+
+            &:hover {
+                border-color: #f1c40f;
+                transition: border-color 0.1s ease-in;
+            }
+        }
+    }
+}
+
+
+@keyframes slide-up-scale-min {
+    0% {
+        transform: scale(1), translateY(0%);
+    }
+    100% {
+        transform: scale(0.5), translateY(-100%);
+    }
+}
+
+@keyframes slide-down-scale-max {
+    0% {
+        transform: scale(0.5), translateY(-100%);
+    }
+    100% {
+        transform: scale(1), translateY(0%);
+    }
+}

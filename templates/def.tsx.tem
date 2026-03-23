@@ -1,0 +1,42 @@
+import * as React from "react";
+import { connect, ConnectedProps } from "react-redux";
+import { AppDispatch, RootState } from "../../redux/AppStore";
+//import { } from "./${Name}Slice";
+
+const mapStateToProps = (state: RootState) => {
+    return {
+
+    };
+};
+
+const mapDispatchToProps = (dispatch: AppDispatch) => {
+    return {
+
+    };
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+interface ${Name}State {
+    
+};
+
+type ${Name}Props = ConnectedProps<typeof connector> & {
+
+};
+
+class ${Name} extends React.Component<${Name}Props, ${Name}State> {
+    constructor(props: ${Name}Props) {
+        super(props);
+    }
+
+    render(): React.ReactNode {
+        return (
+            <>
+
+            </>
+        );
+    }
+}
+
+export default connector(${Name});

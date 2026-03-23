@@ -1,0 +1,285 @@
+.testeritem-header {
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    :nth-child(3) {
+
+        :hover {
+            color: #16a085;
+            cursor: pointer;
+        }
+    }
+}
+
+.testeritem-cont {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(130px, 130px);
+    grid-gap: 10px;
+}
+
+.testeritem-btns {
+    font-size: 28px;
+    margin-top: 10px;
+
+    > * {
+        width: 70px;
+        text-align: center;
+        padding: 5px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .testeritem-pre {
+        float: left;
+    }
+
+    .testeritem-next {
+        float: right;
+    }
+
+    .testeritem-btn-active {
+        background-color: #2980b9;
+        color: #fff;
+        box-shadow: 0px 0px 3px #00000050;
+        &:active {
+            box-shadow: 0px 0px 0px #00000050;
+        }
+
+        user-select: none;
+    }
+
+    .testeritem-btn-noactive {
+        background-color: #ecf0f1;
+        color: #bdc3c7;
+    }
+}
+
+.testeritem-card {
+    position: relative;
+    background-color: #fff;
+    border: 1.6px solid #2c3e50;
+    border-radius: 16px;
+    box-shadow: 0px 0px 2px #2c3e50;
+    padding: 10px;
+    * {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .testeritem-user {
+        position: relative;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: #34495e;
+        font-size: 18px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        z-index: 1;
+    }   
+
+    .testeritem-postion {
+        position: relative;
+        font-family: Georgia, 'Times New Roman', Times, serif;        
+        z-index: 1;
+        margin-top: 6px;
+    }
+
+    .testeritem-id {
+        position: relative;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 12px;
+        color: #95a5a6;
+        margin-bottom: 10px;
+        z-index: 1;
+    }
+
+    .testeritem-mail {
+        position: relative;
+        font-family: Georgia, 'Times New Roman', Times, serif;        
+        margin-top: 4px;
+        // z-index: 2;
+    }
+
+    .testeritem-op {
+        position: relative;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 18px;
+        color: #fff;
+        z-index: 3;
+
+        > * {
+            position: relative;
+            border-radius: 4px;
+            box-shadow: 0px 0px 4px #00000070;
+            cursor: pointer;
+
+            &:active {
+                box-shadow: 0px 0px 0px #00000070;
+                user-select: none;
+            }
+        }
+
+        .testeritem-del {
+            padding: 4px;
+            background-color: #c0392b;
+        }
+
+        .testeritem-edit {
+            background-color: #16a085;
+            padding: 4px;
+            margin-left: 10px;
+        }
+    }
+}
+
+.testeritem-add {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #00000050;
+    z-index: 100;
+
+    .testeritem-add-page {
+        padding: 20px;
+        background-color: #fff;
+        border-radius:16px;
+        box-shadow: 0px 0px 6px #000;
+        width: 400px;
+        font-family: 'Times New Roman', Times, serif;
+
+        input[type="text"] , input[type="password"] ,
+        input[type="number"], input[type="email"] {
+            height: 32px;
+            outline: none;
+            border: none;
+            font-size: 16px;
+            font-family: 'Times New Roman', Times, serif;
+            &:focus , &:valid {
+                border-bottom: solid 2px #3498db;
+            }
+        }
+
+        input[type="radio"] {
+            cursor: pointer;
+        }
+
+        .tiap-header {
+            margin-bottom: 30px;
+            > * {
+                cursor: pointer;
+            }
+
+            :nth-child(1) {
+                margin-right: 20px;
+            }
+
+            :nth-child(3) {
+                display: block;
+                height: 3px;
+                width: 32px;
+                background-color: #16a085;
+                border-radius: 3px;
+                transition: all 0.15s ease-in-out;
+            }
+        }
+
+        .tiap-host {
+            width: 100%;
+            margin-bottom: 10px;
+            
+            :nth-child(1) {
+                width: 75%;
+                margin-right: 3px;
+                border-bottom: solid 2px #bdc3c7;
+            }
+            :nth-child(2) {
+                width: calc(25% - 10px);
+                float: right;
+                border-bottom: solid 2px #bdc3c7;
+                text-align: center;
+            }
+        }
+
+        .tiap-secu {
+            margin-bottom: 10px;
+            label {
+                line-height: 32px;
+            }
+            margin-top: 20px;
+            :nth-child(3) {
+                margin-left: 50px;
+            }
+        }
+        .tiap-name {
+            input {
+                width: 100%;
+                border-bottom: solid 2px #bdc3c7;
+            }
+            margin-bottom: 10px;
+        }   
+        .tiap-pass {
+            input {
+                width: 100%;
+                border-bottom: solid 2px #bdc3c7;
+            }
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .tiap-btns {
+            > * {
+                display: inline-block;
+                padding: 4px 6px;
+                border-radius: 4px;
+                cursor: pointer;
+                color: #fff;
+                box-shadow: 0px 0px 4px #00000050;
+                user-select: none;
+                
+                &:active {
+                    box-shadow: 0px 0px 0px #00000050;
+                }
+            }
+
+            .tiap-btn-cancel {
+                background-color: #e74c3c;
+                margin-right: 10px;
+            }
+
+            .tiap-btn-sure {
+                background-color: #27ae60;
+            }
+
+            margin-top: 30px;
+            text-align: right;
+        }
+
+        .tiap-file {
+            ::-webkit-file-upload-button {
+                background: none;
+                background-color: #3498db;
+                color: #fff;
+                outline: none;
+                border: none;
+                padding: 5px;
+                border-radius: 4px;
+                box-shadow: 0px 0px 4px #00000050;
+                cursor: pointer;
+                margin-right: 20px;
+                &:active {
+                    box-shadow: 0px 0px 0px #00000050;
+                }
+            }
+        }
+    }
+}
