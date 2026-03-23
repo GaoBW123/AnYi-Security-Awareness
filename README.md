@@ -38,7 +38,7 @@
 
 - Python 3.8+
 - Node.js 14+
-- MySQL 5.7+
+- SQLite 3.0+
 - PyTorch 1.9+
 
 ### 安装步骤
