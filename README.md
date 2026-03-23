@@ -52,10 +52,16 @@
 前端控制台：http://localhost:3000
 后端API：http://localhost:5000
 
-## 功能界面
+## 部分功能界面
 
 ### 控制台界面
 <img width="1194" height="244" alt="image" src="https://github.com/user-attachments/assets/a14ac5d5-f806-4010-83a7-124e6d163922" />
+
+## 邮箱管理
+<img width="1194" height="395" alt="image" src="https://github.com/user-attachments/assets/5249c835-003d-4100-8480-6170380a9619" />
+
+## 邮件管理
+<img width="1181" height="555" alt="image" src="https://github.com/user-attachments/assets/26ca559d-f512-4b9d-9a83-456b3ff71d0d" />
 
 ### 数据收集
 <img width="1502" height="838" alt="image" src="https://github.com/user-attachments/assets/0a83fe0b-1987-4796-8583-f50cd8ab873a" />
